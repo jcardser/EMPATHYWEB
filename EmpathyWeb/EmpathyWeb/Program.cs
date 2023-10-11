@@ -1,4 +1,7 @@
 using EmpathyWeb.Data;
+using EmpathyWeb.Data.Entities;
+using EmpathyWeb.Helpers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +14,20 @@ builder.Services.AddDbContext<DataContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddIdentity<User, IdentityRole>(Ew =>
+{
+    Ew.User.RequireUniqueEmail = true; //E-mail Unico
+    Ew.Password.RequireDigit = false;
+    Ew.Password.RequiredUniqueChars = 0;
+    Ew.Password.RequireLowercase = false;
+    Ew.Password.RequireNonAlphanumeric = false;
+    Ew.Password.RequireUppercase = false;
+    Ew.Password.RequiredLength = 6;
+}).AddEntityFrameworkStores<DataContext>();
+
+
 builder.Services.AddTransient<SeedDb>();
+builder.Services.AddScoped<IUserHelper, UserHelper>();
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
@@ -40,7 +56,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
