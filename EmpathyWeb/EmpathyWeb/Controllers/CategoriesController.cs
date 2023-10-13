@@ -1,10 +1,13 @@
 ﻿using EmpathyWeb.Data;
 using EmpathyWeb.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmpathyWeb.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class CategoriesController : Controller
     {
         private readonly DataContext _context;

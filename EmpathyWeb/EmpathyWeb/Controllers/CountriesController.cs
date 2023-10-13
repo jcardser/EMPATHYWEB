@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using EmpathyWeb.Data;
 using EmpathyWeb.Data.Entities;
 using EmpathyWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmpathyWeb.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class CountriesController : Controller
     {
         private readonly DataContext _context;

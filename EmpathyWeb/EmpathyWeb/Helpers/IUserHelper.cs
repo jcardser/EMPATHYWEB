@@ -1,4 +1,5 @@
 ﻿using EmpathyWeb.Data.Entities;
+using EmpathyWeb.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace EmpathyWeb.Helpers
@@ -14,6 +15,11 @@ namespace EmpathyWeb.Helpers
         Task AddUserToRoleAsync(User user, string roleName);
 
         Task<bool> IsUserInRoleAsync(User user, string roleName);
+
+        Task<SignInResult> LoginAsync(LoginViewModel model);
+
+        Task LogoutAsync();
+
     }
 
 }
