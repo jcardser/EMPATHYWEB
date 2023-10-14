@@ -10,7 +10,9 @@ namespace EmpathyWeb.Helpers
 
         Task<IdentityResult> AddUserAsync(User user, string password);
 
-        Task CheckRoleAsync(string roleName);
+		Task<User> AddUserAsync(AddUserViewModel model);
+
+		Task CheckRoleAsync(string roleName);
 
         Task AddUserToRoleAsync(User user, string roleName);
 
@@ -20,6 +22,8 @@ namespace EmpathyWeb.Helpers
 
         Task LogoutAsync();
 
-    }
+
+
+	}
 
 }

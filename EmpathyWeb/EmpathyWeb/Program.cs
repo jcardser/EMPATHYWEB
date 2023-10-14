@@ -35,6 +35,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddTransient<SeedDb>();
 builder.Services.AddScoped<IUserHelper, UserHelper>();
 builder.Services.AddScoped<IComboxHelper, ComboxHelper>();
+builder.Services.AddScoped<IBlobHelper, BlobHelper>();   
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 var app = builder.Build();
