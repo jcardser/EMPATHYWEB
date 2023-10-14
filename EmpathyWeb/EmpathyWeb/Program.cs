@@ -31,9 +31,10 @@ builder.Services.ConfigureApplicationCookie(options =>
 	options.AccessDeniedPath = "/Account/NotAuthorized";
 });
 
+//Inyecciones
 builder.Services.AddTransient<SeedDb>();
 builder.Services.AddScoped<IUserHelper, UserHelper>();
-
+builder.Services.AddScoped<IComboxHelper, ComboxHelper>();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 var app = builder.Build();
