@@ -23,6 +23,7 @@ namespace EmpathyWeb.Data
             await CheckCountriesAsync();
             await CheckRolesAsync();
             await CheckUserAsync("1067950681", "Juan Sebastian", "Cardona Serna", "jcardser@yopmail.com", "304 414 3038", "Villa hermosa", UserType.Admin);
+            await CheckUserAsync("1230099", "ProPruebas", "professional", "propuebas@yopmail.com", "304 414 3038", "Villa hermosa", UserType.UserProfessional);
             await CheckUserAsync("1152713905", "Laura Valentina", "Lopera Londoño", "lvalel@yopmail.com", "301 388 74 94", "Manrique", UserType.User);
         }
 
@@ -64,6 +65,7 @@ namespace EmpathyWeb.Data
         {
             await _userHelper.CheckRoleAsync(UserType.Admin.ToString());
             await _userHelper.CheckRoleAsync(UserType.User.ToString());
+            await _userHelper.CheckRoleAsync(UserType.UserProfessional.ToString());
         }
 
         private async Task CheckCountriesAsync()
