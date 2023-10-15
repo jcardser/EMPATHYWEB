@@ -93,6 +93,9 @@ namespace EmpathyWeb.Controllers
 				if (user == null)
 				{
 					ModelState.AddModelError(string.Empty, "Este correo ya está siendo usado.");
+                    model.Countries = await _comboxHelper.GetComboCountriesAsync();
+                    model.States = await _comboxHelper.GetComboStatesAsync(model.CountryId);
+                    model.Cities = await _comboxHelper.GetComboCitiesAsync(model.StateId);
 					return View(model);
 				}
 
