@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace EmpathyWeb.Data.Entities
 {
@@ -11,8 +12,9 @@ namespace EmpathyWeb.Data.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Name { get; set; }
 
+        [JsonIgnore]
         public Country Country { get; set; }
-
+     
         public ICollection<City> Cities { get; set; }
 
         [Display(Name="Ciudades")]

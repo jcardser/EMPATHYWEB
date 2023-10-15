@@ -4,6 +4,7 @@ using EmpathyWeb.Enums;
 using EmpathyWeb.Helpers;
 using EmpathyWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmpathyWeb.Controllers
 {
@@ -114,5 +115,32 @@ namespace EmpathyWeb.Controllers
 		}
 
 
-	}
+        public JsonResult GetStates(int countryId)
+        {
+            Country country = _context.Countries
+                .Include(c => c.States)
+                .FirstOrDefault(c => c.Id == countryId);
+            if (country == null)
+            {
+                return null;
+            }
+
+            return Json(country.States.OrderBy(d => d.Name));
+        }
+
+        public JsonResult GetCities(int stateId)
+        {
+            State state = _context.States
+                .Include(s => s.Cities)
+                .FirstOrDefault(s => s.Id == stateId);
+            if (state == null)
+            {
+                return null;
+            }
+
+            return Json(state.Cities.OrderBy(c => c.Name));
+        }
+
+
+    }
 }
