@@ -129,6 +129,9 @@ namespace EmpathyWeb.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CityId")
                         .HasColumnType("int");
 
@@ -198,6 +201,8 @@ namespace EmpathyWeb.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("CityId");
 
@@ -369,11 +374,19 @@ namespace EmpathyWeb.Migrations
 
             modelBuilder.Entity("EmpathyWeb.Data.Entities.User", b =>
                 {
+                    b.HasOne("EmpathyWeb.Data.Entities.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("EmpathyWeb.Data.Entities.City", "City")
                         .WithMany("Users")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
 
                     b.Navigation("City");
                 });
