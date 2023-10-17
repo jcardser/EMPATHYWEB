@@ -49,6 +49,7 @@ namespace EmpathyWeb.Controllers
             }
 
             return View(model);
+
         }
 
         public async Task<IActionResult> Logout()
@@ -93,9 +94,6 @@ namespace EmpathyWeb.Controllers
 				if (user == null)
 				{
 					ModelState.AddModelError(string.Empty, "Este correo ya está siendo usado.");
-                    model.Countries = await _comboxHelper.GetComboCountriesAsync();
-                    model.States = await _comboxHelper.GetComboStatesAsync(model.CountryId);
-                    model.Cities = await _comboxHelper.GetComboCitiesAsync(model.StateId);
 					return View(model);
 				}
 
@@ -118,32 +116,5 @@ namespace EmpathyWeb.Controllers
 		}
 
 
-        public JsonResult GetStates(int countryId)
-        {
-            Country country = _context.Countries
-                .Include(c => c.States)
-                .FirstOrDefault(c => c.Id == countryId);
-            if (country == null)
-            {
-                return null;
-            }
-
-            return Json(country.States.OrderBy(d => d.Name));
-        }
-
-        public JsonResult GetCities(int stateId)
-        {
-            State state = _context.States
-                .Include(s => s.Cities)
-                .FirstOrDefault(s => s.Id == stateId);
-            if (state == null)
-            {
-                return null;
-            }
-
-            return Json(state.Cities.OrderBy(c => c.Name));
-        }
-
-
-    }
+	}
 }

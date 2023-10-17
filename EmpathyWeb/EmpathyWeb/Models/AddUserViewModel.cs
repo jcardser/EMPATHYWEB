@@ -1,4 +1,5 @@
-﻿using EmpathyWeb.Enums;
+﻿using EmpathyWeb.Data.Entities;
+using EmpathyWeb.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace EmpathyWeb.Models
@@ -23,6 +24,7 @@ namespace EmpathyWeb.Models
 		[Required(ErrorMessage = "El campo {0} es obligatorio.")]
 		[StringLength(20, MinimumLength = 6, ErrorMessage = "El campo {0} debe tener entre {2} y {1} carácteres.")]
 		public string PasswordConfirm { get; set; }
+
 
 		[Display(Name = "Tipo de usuario")]
 		public UserType UserType { get; set; }

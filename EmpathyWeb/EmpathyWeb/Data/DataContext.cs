@@ -17,6 +17,7 @@ namespace EmpathyWeb.Data
         public DbSet<State> States { get; set; }
         public DbSet<Country> Countries { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

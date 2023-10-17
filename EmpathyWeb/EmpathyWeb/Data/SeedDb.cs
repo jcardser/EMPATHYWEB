@@ -144,6 +144,7 @@ namespace EmpathyWeb.Data
                 _context.Categories.Add(new Category { Name = "Reumatología" });
                 _context.Categories.Add(new Category { Name = "Psiquiatría" });
                 _context.Categories.Add(new Category { Name = "Medicina del dolor" });
+                _context.Categories.Add(new Category { Name = "Usuario" });
                 await _context.SaveChangesAsync();
             }
         }
