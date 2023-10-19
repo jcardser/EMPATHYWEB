@@ -25,7 +25,6 @@ namespace EmpathyWeb.Models
 		[StringLength(20, MinimumLength = 6, ErrorMessage = "El campo {0} debe tener entre {2} y {1} carácteres.")]
 		public string PasswordConfirm { get; set; }
 
-        public Category Category { get; set; }
 
 		[Display(Name = "Tipo de usuario")]
 		public UserType UserType { get; set; }
