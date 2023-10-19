@@ -27,7 +27,7 @@ namespace EmpathyWeb.Models
 
         public Category Category { get; set; }
 
-        [Display(Name = "Tipo de usuario")]
+		[Display(Name = "Tipo de usuario")]
 		public UserType UserType { get; set; }
 	}
 
