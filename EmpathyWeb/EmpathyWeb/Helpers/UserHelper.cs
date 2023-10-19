@@ -41,7 +41,7 @@ namespace EmpathyWeb.Helpers
 				ImageId = model.ImageId,
 				PhoneNumber = model.PhoneNumber,
 				City = await _context.Cities.FindAsync(model.CityId),
-				UserName = model.Username,
+                UserName = model.Username,
 				UserType = model.UserType
 			};
 
@@ -114,7 +114,11 @@ namespace EmpathyWeb.Helpers
             await _signInManager.SignOutAsync();
         }
 
+        public async Task<IdentityResult> UpdateUserAsync(User user)
+        {
+            return await _userManager.UpdateAsync(user);
 
+        }
     }
 }
 

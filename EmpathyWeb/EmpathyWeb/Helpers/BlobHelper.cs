@@ -9,7 +9,7 @@ namespace EmpathyWeb.Helpers
 		private readonly CloudBlobClient _blobClient;
         public BlobHelper(IConfiguration configuration)
         {
-			string keys = configuration["Blob:ConnectionString"];
+			string keys = configuration["Blob:ConnectionStrings"];
 			CloudStorageAccount storageAccount = CloudStorageAccount.Parse(keys);
 			_blobClient = storageAccount.CreateCloudBlobClient();
 		}
