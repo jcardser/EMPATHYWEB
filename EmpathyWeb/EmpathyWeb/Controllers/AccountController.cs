@@ -49,6 +49,7 @@ namespace EmpathyWeb.Controllers
             }
 
             return View(model);
+
         }
 
         public async Task<IActionResult> Logout()
